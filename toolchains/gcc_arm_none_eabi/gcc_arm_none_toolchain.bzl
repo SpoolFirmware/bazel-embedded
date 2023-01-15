@@ -160,7 +160,6 @@ def _gcc_arm_none_toolchain_config_info_impl(ctx):
             common_features.output_format,
             embedded_features.exceptions,
             embedded_features.runtime_type_information,
-            embedded_features.sys_spec,
             embedded_features.cc_constructor_destructor,
         ],
     )

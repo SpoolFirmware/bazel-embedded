@@ -66,38 +66,6 @@ _EXCEPTIONS_FEATURE = feature(
     ],
 )
 
-_SYS_SPEC_FEATURE = feature(
-    name = "sys_spec",
-    enabled = True,
-    flag_sets = [
-        flag_set(
-            actions = _CPP_ALL_COMPILE_ACTIONS,
-            flag_groups = [
-                flag_group(
-                    flags = [
-                        "-mabi=aapcs",
-                        "-mthumb",
-                        "-specs=nano.specs",
-                        "-specs=nosys.specs",
-                    ],
-                ),
-            ],
-        ),
-        flag_set(
-            actions = _LD_ALL_ACTIONS,
-            flag_groups = [
-                flag_group(
-                    flags = [
-                        # Disable Exceptions
-                        "-lc",
-                        "-lnosys",
-                    ],
-                ),
-            ],
-        ),
-    ],
-)
-
 _CC_CONSTRUCTOR_DESTRUCTOR_FEATURE = feature(
     name = "cc_constructor_destructor",
     enabled = True,
@@ -139,6 +107,5 @@ def GetGccEmbeddedFeatures():
     return all_embedded_features(
         exceptions = _EXCEPTIONS_FEATURE,
         runtime_type_information = _RUNTIME_TYPE_INFORMATION_FEATURE,
-        sys_spec = _SYS_SPEC_FEATURE,
         cc_constructor_destructor = _CC_CONSTRUCTOR_DESTRUCTOR_FEATURE,
     )
