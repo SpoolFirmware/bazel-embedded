@@ -30,7 +30,6 @@ load("@com_gcc_arm_none_eabi_compiler//:defs.bzl", "SYSTEM_INCLUDE_COMMAND_LINE"
 load("//toolchains/features/common:defs.bzl", "GetCommonFeatures")
 load("//toolchains/features/embedded:defs.bzl", "GetEmbeddedFeatures")
 
-_ARM_NONE_EABI_VERSION = "9.2.1"
 _CPP_ALL_COMPILE_ACTIONS = [
     ACTION_NAMES.assemble,
     ACTION_NAMES.preprocess_assemble,
@@ -312,9 +311,6 @@ def gcc_arm_none_toolchain(name, compiler_components, architecture, float_abi, e
 
     native.toolchain(
         name = "-".join(["cc-toolchain", architecture, fpu]),
-        exec_compatible_with = [
-            "@platforms//cpu:x86_64",
-        ],
         target_compatible_with = [
             "@platforms//cpu:" + architecture,
             "//constraints/fpu:" + fpu,

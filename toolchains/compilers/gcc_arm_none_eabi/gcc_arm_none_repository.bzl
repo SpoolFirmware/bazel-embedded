@@ -25,7 +25,7 @@ load("//toolchains/tools/include_tools:include_tools.bzl", "include_tools")
 
 def _com_gcc_arm_none_repository_impl(repository_ctx):
     version = repository_ctx.attr.version
-    remote_toolchain_info = get_platform_specific_config(version, repository_ctx.os.name)
+    remote_toolchain_info = get_platform_specific_config(version, repository_ctx.os.name, repository_ctx.os.arch)
 
     repository_ctx.download_and_extract(
         url = remote_toolchain_info["remote_compiler"]["url"],
@@ -78,8 +78,8 @@ gcc_arm_none_repository = repository_rule(
     _com_gcc_arm_none_repository_impl,
     attrs = {
         "version": attr.string(
-            default = "11",
-            doc = "GCC version, version 9 and 11 currently only version supported",
+            default = "12",
+            doc = "GCC version, version 12 currently only version supported",
             values = TOOLCHAIN_VERSIONS.keys(),
         ),
     },
