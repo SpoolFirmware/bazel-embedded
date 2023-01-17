@@ -84,7 +84,7 @@ _ALL_WARNINGS_FEATURE = feature(
             actions = _CPP_ALL_COMPILE_ACTIONS + _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
                 flag_group(
-                    flags = ["-Wall", "-Wpedantic"],
+                    flags = ["-Wall"],
                 ),
             ],
         ),
