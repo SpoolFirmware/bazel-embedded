@@ -230,6 +230,7 @@ _OPT_FEATURE = feature(
                         # Inline small functions if less instructions are likely to be executed
                         "-finline-small-functions",
                         "-flto",
+                        "-ffat-lto-objects"
                     ],
                 ),
             ],
