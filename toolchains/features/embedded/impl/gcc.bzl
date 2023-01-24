@@ -79,11 +79,23 @@ _CC_CONSTRUCTOR_DESTRUCTOR_FEATURE = feature(
                         "-ffreestanding",
                         # Instantiate global variables only once
                         "-fno-common",
-                        # Emits guards against functions that have references to local array definitions
-                        "-fstack-protector-strong",
+                        "-nostdlib",
+                        "-nostartfiles",
+                        "-nodefaultlibs",
+                        "-fno-stack-protector",
                     ],
                 ),
             ],
+        ),
+        flag_set(
+            actions = _LD_ALL_ACTIONS,
+            flag_groups = [
+                flag_group(
+                    flags = [
+                        "-lgcc",
+                    ]
+                )
+            ]
         ),
         flag_set(
             actions = _CPP_ALL_COMPILE_ACTIONS,
