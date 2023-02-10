@@ -180,8 +180,7 @@ _DEBUG_FEATURE = feature(
             flag_groups = [
                 flag_group(
                     flags = [
-                        "-O0",
-                        "-g3",
+                        "-g",
                     ],
                 ),
             ],
@@ -227,6 +226,7 @@ _OPT_FEATURE = feature(
                     flags = [
                         # Optimise for space
                         "-Os",
+                        "-g",
                         # Inline small functions if less instructions are likely to be executed
                         "-finline-small-functions",
                         "-flto",
