@@ -10,6 +10,9 @@ platform(
 
 platform(
     name = "cortex_m0",
+    constraint_values = [
+        "@bazel_embedded//constraints/cpu_variant:cortex_m0",
+    ],
     exec_properties = {
         "EXECUTOR": "cortex_m",
     },
@@ -21,6 +24,9 @@ platform(
     exec_properties = {
         "EXECUTOR": "cortex_m1",
     },
+    constraint_values = [
+        "@bazel_embedded//constraints/cpu_variant:cortex_m1",
+    ],
     parents = [":cortex_m"],
 )
 
@@ -28,6 +34,7 @@ platform(
     name = "cortex_m3",
     constraint_values = [
         "@platforms//cpu:armv7-m",
+        "@bazel_embedded//constraints/cpu_variant:cortex_m3",
     ],
     exec_properties = {
         "EXECUTOR": "cortex_m3",
@@ -39,6 +46,7 @@ platform(
     name = "cortex_m4",
     constraint_values = [
         "@platforms//cpu:armv7e-m",
+        "@bazel_embedded//constraints/cpu_variant:cortex_m4",
     ],
     exec_properties = {
         "EXECUTOR": "cortex_m4",
@@ -50,6 +58,7 @@ platform(
     name = "cortex_m4_fpu",
     constraint_values = [
         "@bazel_embedded//constraints/fpu:fpv4-sp-d16",
+        "@bazel_embedded//constraints/cpu_variant:cortex_m4f",
     ],
     exec_properties = {
         "EXECUTOR": "cortex_m4_fpu",
@@ -75,34 +84,4 @@ platform(
         "EXECUTOR": "cortex_m7_fpu",
     },
     parents = [":cortex_m"],
-)
-
-platform(
-    name = "stm32f2xx",
-    parents = [":cortex_m3"],
-)
-
-platform(
-    name = "stm32f3xx",
-    parents = [":cortex_m4_fpu"],
-)
-
-platform(
-    name = "stm32f4xx",
-    parents = [":cortex_m4"],
-)
-
-platform(
-    name = "stm32f7xx",
-    parents = [":cortex_m7_fpu"],
-)
-
-platform(
-    name = "stm32g4xx",
-    parents = [":cortex_m4_fpu"],
-)
-
-platform(
-    name = "stm32h7xx",
-    parents = [":cortex_m7_fpu"],
 )
