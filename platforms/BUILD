@@ -3,6 +3,7 @@ package(default_visibility = ["//visibility:public"])
 platform(
     name = "cortex_m",
     constraint_values = [
+        "@platforms//os:none",
         "@bazel_embedded//constraints/fpu:none",
         "@platforms//cpu:armv6-m",
     ],
@@ -57,6 +58,7 @@ platform(
 platform(
     name = "cortex_m4_fpu",
     constraint_values = [
+        "@platforms//cpu:armv7e-mf",
         "@bazel_embedded//constraints/fpu:fpv4-sp-d16",
         "@bazel_embedded//constraints/cpu_variant:cortex_m4f",
     ],
@@ -77,7 +79,7 @@ platform(
 platform(
     name = "cortex_m7_fpu",
     constraint_values = [
-        "@platforms//cpu:armv7e-m",
+        "@platforms//cpu:armv7e-mf",
         "@bazel_embedded//constraints/fpu:fpv5-d16",
     ],
     exec_properties = {

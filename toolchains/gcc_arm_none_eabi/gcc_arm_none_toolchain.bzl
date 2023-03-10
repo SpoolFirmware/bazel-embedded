@@ -309,10 +309,14 @@ def gcc_arm_none_toolchain(name, compiler_components, architecture, float_abi, e
         toolchain_identifier = "arm-none-eabi",
     )
 
+    cpu = architecture
+    if fpu != 'none':
+        cpu = architecture + 'f'
+
     native.toolchain(
         name = "-".join(["cc-toolchain", architecture, fpu]),
         target_compatible_with = [
-            "@platforms//cpu:" + architecture,
+            "@platforms//cpu:" + cpu,
             "//constraints/fpu:" + fpu,
         ],
         toolchain = ":" + name,
